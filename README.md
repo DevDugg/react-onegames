@@ -1,6 +1,6 @@
 # 1Games gaming website using React
 
-##Technologies used:
+## Technologies used:
 
   - ReactJs
   - SCSS (node-sass)

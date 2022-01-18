@@ -2,6 +2,7 @@
 
 ## Technologies used:
 
-  - ReactJs
-  - SCSS (node-sass)
-  - Axios
+- ReactJs
+- react-router-dom
+- SCSS (node-sass)
+- Axios

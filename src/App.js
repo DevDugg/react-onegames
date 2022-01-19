@@ -1,6 +1,8 @@
 // IMPORT MODULES
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+// Importing styles
+import "./styles/style.scss";
 
 const App = () => {
   return (

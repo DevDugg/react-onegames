@@ -1,0 +1,41 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font-family;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: $dark-black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+span {
+    font-family: $font-family;
+}
+
+.container {
+    min-width: 115rem;
+    width: 100%;
+    padding: 0 2.5rem;
+    margin: 0 auto;
+}
+
+
+
+// git add --all
+// git add commite
+// git push

@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import "./styles/style.scss";
 
 // IMPORT COMPONENTS
-// import Nav from './components/Nav';
+import Nav from './components/Nav';
 
 // IMPORT PAGES
 import Home from "./pages/Home";
@@ -15,8 +15,8 @@ import GameDescription from "./pages/GameDescription";
 const App = () => {
   return (
     <div className="App">
-      {/* <Nav /> */}
-      {/* Place Nav here, because this component must always be visible on any page */}
+      <Nav />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/game" element={<GameDescription />} />

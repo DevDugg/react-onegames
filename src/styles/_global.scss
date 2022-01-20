@@ -13,6 +13,7 @@ html {
 
 body {
     background: $dark-black;
+    color: $white;
 }
 
 h1,
@@ -28,7 +29,7 @@ span {
 }
 
 .container {
-    min-width: 115rem;
+    max-width: 116rem;
     width: 100%;
     padding: 0 2.5rem;
     margin: 0 auto;

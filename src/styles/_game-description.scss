@@ -1,0 +1,22 @@
+.game-desc {
+  position: relative;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  height: 100%;
+  min-height: 66.1rem;
+  background: linear-gradient(
+      360deg,
+      #151515 3.11%,
+      rgba(21, 21, 21, 0.33) 100%
+    ),
+    url("../images/game-bg.jpg");
+  background-clip: border-box;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}

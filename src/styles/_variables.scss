@@ -3,15 +3,63 @@ $dark-black: #151515;
 $base-black: #202020;
 $light-black: #303030;
 $gray: #797979;
-$green: #6DC849;
-$white: #FFFFFF;
-$orange: #E8A627;
-$red: #C02C2C;
+$green: #6dc849;
+$white: #ffffff;
+$orange: #e8a627;
+$red: #c02c2c;
 // =========================
 
 // Fonts
-$font-family: 'Poppins', sans-serif;
+$font-family: "Poppins", sans-serif;
 $font-regular: 400;
 $font-medium: 500;
 $font-bold: 700;
 // ========================
+
+// Mixins
+
+// // Mixins for game scores
+@mixin score-high {
+  display: inline-block;
+  font-weight: $font-medium;
+  color: $green;
+  border: 0.1rem solid $green;
+  padding: 0.45rem 0.65rem;
+  border-radius: 0.2rem;
+}
+
+@mixin score-mid {
+  display: inline-block;
+  font-weight: $font-medium;
+  color: $orange;
+  border: 0.1rem solid $orange;
+  padding: 0.45rem 0.65rem;
+  border-radius: 0.2rem;
+}
+
+@mixin score-low {
+  display: inline-block;
+  font-weight: $font-medium;
+  color: $red;
+  border: 0.1rem solid $red;
+  padding: 0.45rem 0.65rem;
+  border-radius: 0.2rem;
+}
+
+// // Uppercase text mixin
+
+@mixin upper {
+  text-transform: uppercase;
+}
+
+// // Release date mixin
+@mixin release {
+  @include upper;
+  display: inline-block;
+  background: #ffffff;
+  border-radius: 0.8rem;
+  color: $light-black;
+  font-size: 1.6rem;
+  padding: 0.8rem 1.6rem;
+  font-weight: $font-regular;
+}

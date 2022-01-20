@@ -15,7 +15,7 @@
         top: 0;
         right: -1.5rem;
         font-size: 1.6rem;
-        font-weight: bold;
+        font-weight: $font-bold;
         color: $gray;
       }
     }
@@ -24,8 +24,8 @@
   a {
     text-decoration: none;
     color: $gray;
-    text-transform: uppercase;
+    @include upper;
     font-size: 1.6rem;
-    font-weight: bold;
+    font-weight: $font-bold;
   }
 }

@@ -1,0 +1,50 @@
+.grid-item {
+    border-radius: 1.6rem;
+    cursor: pointer;
+    max-width: 25.5rem;
+    width: 100%;
+    overflow: hidden;
+    height: fit-content;
+    text-decoration: none;
+}
+
+.grid-item-img {
+    height: 14.3rem;
+
+    img {
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.grid-item-desc {
+    background: $base-black;
+    padding: 1.6rem;
+    display: flex;
+    border-bottom-left-radius: 1.6rem;
+    border-bottom-right-radius: 1.6rem;
+    text-decoration: none;
+    text-decoration: none;
+}
+
+.grid-item-title {
+    @include upper;
+    max-width: 18.8rem;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: $font-medium;
+    margin-right: 0.8rem;
+    color: $white;
+    text-decoration: none;
+}
+
+.grid-item-score {
+    @include score-high;
+    width: 2.7rem;
+    height: 2.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: $font-medium;
+}

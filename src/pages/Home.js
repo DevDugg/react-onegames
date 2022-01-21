@@ -1,10 +1,17 @@
 // IMPORT MODULES
-import React from "react";
+import React, { useState } from "react";
+// Importing components
+import Header from "../components/Header";
+import Grid from "../components/Grid";
 
 const Home = () => {
+
+  const [grid, setGrid] = useState(true);
+
   return(
     <div className="container">
-      <h2>Home</h2>
+      <Header setGrid={setGrid} grid={grid}/>
+      <Grid grid={grid} />
     </div>
   );
 };

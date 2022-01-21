@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 255px);
+  grid-template-columns: repeat(4, 1fr);
   gap: 3rem;
   justify-content: center;
 
@@ -60,5 +60,11 @@
     width: 6.8rem;
     height: 6.8rem;
     font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

@@ -2,9 +2,9 @@
   padding: 4.8rem 0 5.6rem;
 
   .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 2rem;
   }
 }
 
@@ -19,11 +19,13 @@
 .search {
   position: relative;
   cursor: pointer;
+  max-width: 73rem;
+  width: 100%;
+  justify-self: right;
 
   input {
     max-width: 73rem;
     width: 100%;
-    width: 73rem;
     border-radius: 1.8rem;
     background: $light-black;
     color: $gray;

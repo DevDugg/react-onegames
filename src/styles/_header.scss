@@ -48,3 +48,14 @@
     font-weight: $font-medium;
     color: $gray;
 }
+
+@media screen and (max-width: 660px) {
+    .d-options {
+        display: none;
+    }
+
+    .title-box {
+        width: 100%;
+        justify-content: center;
+    }
+}

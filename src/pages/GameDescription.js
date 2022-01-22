@@ -1,9 +1,10 @@
 // IMPORT MODULES
-import React from "react";
+import React, { useState } from "react";
 
 // IMPORT COMPONENTS
 import Breadcrumb from "../components/Breadcrumb";
 import Grid from "../components/Grid";
+import ImageSlider from "../components/ImageSlider";
 
 // IMPORT IMAGES
 import Video from "../images/game-video.jpg";
@@ -13,8 +14,28 @@ import Img_3 from "../images/game-img-3.jpg";
 import Img_4 from "../images/game-img-4.jpg";
 
 const GameDescription = () => {
+  const images = [
+    Img_1,
+    Img_2,
+    Img_3,
+    Img_4,
+    Img_1,
+    Img_2,
+    Img_3,
+    Img_4,
+    Img_1,
+    Img_2,
+    Img_3,
+    Img_4,
+  ];
+  const [activeImageId, setActiveImageId] = useState(-1);
   return (
     <section className="game-desc">
+      <ImageSlider
+        images={images}
+        activeImageId={activeImageId}
+        setActiveImageId={setActiveImageId}
+      />
       <div className="bg"></div>
       <div className="container">
         <div className="game-desc-inner">

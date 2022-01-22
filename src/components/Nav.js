@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // Importing images
-import search from "../images/search.svg";
+import search from "../icons/search.svg";
 
 const Nav = () => {
   return (

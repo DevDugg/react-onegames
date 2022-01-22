@@ -1,7 +1,17 @@
 // IMPORT MODULES
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { FreeMode, Navigation, Thumbs } from "swiper";
+// IMPORT SWIPER STYLES
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+// INSTALL SWIPER MODULES
+SwiperCore.use([FreeMode, Navigation, Thumbs]);
 
 const ImageSlider = ({ images, activeImageId, setActiveImageId }) => {
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <section className="slider">
       <div className="slider-container">
@@ -13,24 +23,44 @@ const ImageSlider = ({ images, activeImageId, setActiveImageId }) => {
             </div>
           </div>
           <div className="slider__middle">
-            {images.map((image, i) => {
-              return (
-                <div data-key={i} key={i} className="slider-img">
-                  <img src={image} alt={image} />
-                </div>
-              );
-            })}
-          </div>
-          <div className="slider__bottom">
-            <div className="slider__bottom-inner">
+            <Swiper
+              spaceBetween={10}
+              navigation={true}
+              thumbs={{ swiper: thumbsSwiper }}
+              className="mySwiper2"
+            >
               {images.map((image, i) => {
                 return (
-                  <div data-active={i} key={i} className="slider-img-bottom">
+                  <SwiperSlide data-key={i} key={i} className="slider-img">
                     <img src={image} alt={image} />
-                  </div>
+                  </SwiperSlide>
                 );
               })}
-            </div>
+            </Swiper>
+          </div>
+          <div className="slider__bottom">
+            {/* <div className="slider__bottom-inner"> */}
+            <Swiper
+              onSwiper={setThumbsSwiper}
+              spaceBetween={10}
+              slidesPerView={12}
+              freeMode={true}
+              watchSlidesProgress={true}
+              className="mySwiper"
+            >
+              {images.map((image, i) => {
+                return (
+                  <SwiperSlide
+                    data-active={i}
+                    key={i}
+                    className="slider-img-bottom"
+                  >
+                    <img src={image} alt={image} />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+            {/* </div> */}
           </div>
         </div>
       </div>

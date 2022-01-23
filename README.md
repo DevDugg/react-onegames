@@ -6,3 +6,4 @@
 - react-router-dom
 - SCSS (node-sass)
 - Axios
+- SwiperJs

@@ -28,13 +28,15 @@ const GameDescription = () => {
     Img_3,
     Img_4,
   ];
-  const [activeImageId, setActiveImageId] = useState(-1);
+  const [isActiveSlider, setIsActiveSlider] = useState(false);
+  const [activeImageId, setActiveImageId] = useState(0);
   return (
     <section className="game-desc">
       <ImageSlider
         images={images}
         activeImageId={activeImageId}
-        setActiveImageId={setActiveImageId}
+        isActiveSlider={isActiveSlider}
+        setIsActiveSlider={setIsActiveSlider}
       />
       <div className="bg"></div>
       <div className="container">
@@ -114,16 +116,44 @@ const GameDescription = () => {
               </div>
               <div className="game-img-block">
                 <div className="game-img">
-                  <img src={Img_1} alt="screen 1" />
+                  <img
+                    src={Img_1}
+                    alt="screen 1"
+                    onClick={() => {
+                      setIsActiveSlider(true);
+                      setActiveImageId(0);
+                    }}
+                  />
                 </div>
                 <div className="game-img">
-                  <img src={Img_2} alt="screen 2" />
+                  <img
+                    src={Img_2}
+                    alt="screen 2"
+                    onClick={() => {
+                      setIsActiveSlider(true);
+                      setActiveImageId(1);
+                    }}
+                  />
                 </div>
                 <div className="game-img">
-                  <img src={Img_3} alt="screen 3" />
+                  <img
+                    src={Img_3}
+                    alt="screen 3"
+                    onClick={() => {
+                      setIsActiveSlider(true);
+                      setActiveImageId(2);
+                    }}
+                  />
                 </div>
                 <div className="game-img">
-                  <img src={Img_4} alt="screen 4" />
+                  <img
+                    src={Img_4}
+                    alt="screen 4"
+                    onClick={() => {
+                      setIsActiveSlider(true);
+                      setActiveImageId(3);
+                    }}
+                  />
                 </div>
               </div>
             </div>

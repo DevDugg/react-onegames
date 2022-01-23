@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  gap: 7.4rem;
+  gap: 5.4rem;
 }
 
 .slider__top {
@@ -100,19 +100,19 @@
   }
 }
 
-.slider__bottom {
-  overflow: hidden;
+.slider-img-bottom {
+  margin-bottom: 5rem;
 }
 
 .slider-img-bottom {
-  width: 10rem;
-  height: 5.6rem;
+  width: 12rem;
+  height: 6.72rem;
   border-radius: 0.8rem;
 
   img {
-    width: 10rem;
-    height: 5.6rem;
-    object-fit: contain;
+    width: 12rem;
+    height: 6.72rem;
+    object-fit: cover;
     border-radius: 0.8rem;
   }
 }

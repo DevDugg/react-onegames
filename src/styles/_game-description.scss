@@ -20,14 +20,11 @@
 
 .game-info {
   display: grid;
-  grid-template-columns: 1fr 44.5rem;
-  gap: 12.5rem;
-}
-
-.game-info__left {
-  display: flex;
-  flex-direction: column;
-  gap: 1.8rem;
+  grid-template-areas:
+    "ltop img"
+    "lmid img"
+    "lbot img";
+  column-gap: 12.5rem;
 }
 
 .game-info__left-meta {
@@ -45,6 +42,7 @@
 
 .game-info__left__top {
   padding-bottom: 1.6rem;
+  grid-area: ltop;
 }
 
 .release {
@@ -57,6 +55,7 @@
 }
 
 .game-info__left__middle {
+  grid-area: lmid;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -77,6 +76,7 @@
 }
 
 .game-info__left__bottom {
+  grid-area: lbot;
   display: flex;
   flex-wrap: wrap;
   column-gap: 5rem;
@@ -131,12 +131,6 @@
   }
 }
 
-.game-info__right {
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-}
-
 .game-video {
   max-width: 44.5rem;
   width: 100%;
@@ -189,4 +183,11 @@
   text-align: center;
   font-weight: $font-medium;
   padding: 6.4rem 0;
+}
+
+.game-images {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  grid-area: img;
 }

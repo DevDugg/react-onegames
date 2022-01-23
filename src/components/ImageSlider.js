@@ -24,9 +24,7 @@ const ImageSlider = ({
 
   useEffect(() => {
     if (swiper) {
-      setTimeout(() => {
-        swiper.slideTo(activeImageId);
-      }, 1);
+      swiper.slideTo(activeImageId);
     }
   }, [swiper, activeImageId]);
 

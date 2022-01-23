@@ -12,6 +12,7 @@ import Img_1 from "../images/game-img-1.jpg";
 import Img_2 from "../images/game-img-2.jpg";
 import Img_3 from "../images/game-img-3.jpg";
 import Img_4 from "../images/game-img-4.jpg";
+import { useEffect } from "react/cjs/react.development";
 
 const GameDescription = () => {
   const images = [
@@ -30,6 +31,14 @@ const GameDescription = () => {
   ];
   const [isActiveSlider, setIsActiveSlider] = useState(false);
   const [activeImageId, setActiveImageId] = useState(0);
+
+  useEffect(() => {
+    if (isActiveSlider) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "visible";
+    }
+  }, [isActiveSlider]);
   return (
     <section className="game-desc">
       <ImageSlider

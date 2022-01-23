@@ -3,9 +3,6 @@ import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { FreeMode, Navigation, Thumbs } from "swiper";
 
-// IMPORT CUSTOM HOOKS
-import useMediaQuery from "../hooks/useMediaQuery";
-
 // IMPORT SWIPER STYLES
 import "swiper/css";
 import "swiper/css/pagination";

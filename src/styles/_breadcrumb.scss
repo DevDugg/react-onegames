@@ -29,3 +29,10 @@
     font-weight: $font-bold;
   }
 }
+
+// MEDIA
+@media screen and (max-width: 1010px) {
+  .breadcrumb a {
+    font-size: 1.8rem;
+  }
+}

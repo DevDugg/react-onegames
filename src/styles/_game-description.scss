@@ -25,6 +25,7 @@
     "lmid img"
     "lbot img";
   column-gap: 12.5rem;
+  row-gap: 1.6rem;
 }
 
 .game-info__left-meta {
@@ -190,4 +191,83 @@
   flex-direction: column;
   gap: 1.8rem;
   grid-area: img;
+}
+
+// MEDIA
+@media screen and (max-width: 1010px) {
+  .game-info {
+    grid-template-areas:
+      "ltop"
+      "img"
+      "lmid"
+      "lbot";
+  }
+
+  .game-info__left__middle h3 {
+    font-size: 3.5rem;
+  }
+  .game-about,
+  .game-char-block h6,
+  .score,
+  .release {
+    font-size: 1.8rem;
+  }
+
+  .release-block h3,
+  .genre-block h3 {
+    font-size: 2rem;
+  }
+
+  .game-video {
+    max-height: unset;
+    max-width: unset;
+  }
+  .game-img-block {
+    grid-template-columns: 1fr 1fr;
+  }
+  .game-img {
+    max-height: unset;
+    max-width: unset;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .bg {
+    height: 50vh;
+  }
+  .game-desc-title {
+    font-size: 3rem;
+  }
+  .game-info__left-meta {
+    padding-bottom: 3rem;
+  }
+  .game-images,
+  .game-info {
+    gap: 3rem;
+  }
+  .game-name {
+    font-size: 4rem;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .game-images,
+  .game-info {
+    gap: 2rem;
+  }
+  .game-name {
+    font-size: 3rem;
+  }
+  .release,
+  .score,
+  .game-about,
+  .game-char-block h6,
+  .game-char-block h3,
+  .genre-block h3 {
+    font-size: 1.6rem;
+  }
+  .game-desc-title,
+  .game-info__left__middle h3 {
+    font-size: 2.5rem;
+  }
 }

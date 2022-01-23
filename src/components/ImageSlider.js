@@ -120,7 +120,7 @@ const ImageSlider = ({
                   ? 3
                   : m430
                   ? 2
-                  : 3
+                  : 2
                 // ================
               }
               freeMode={true}

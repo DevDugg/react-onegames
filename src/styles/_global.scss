@@ -52,10 +52,12 @@ ol {
   background: $dark-black;
 }
 ::-webkit-scrollbar-thumb {
-  background: $light-black;
+  border-radius: 1rem;
+  background: $base-black;
+  cursor: pointer;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: $base-black;
+  background: $gray;
 }
 
 // git add --all

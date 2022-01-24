@@ -36,3 +36,9 @@
     font-size: 1.8rem;
   }
 }
+
+@media screen and (max-width: 340px) {
+  .breadcrumb a {
+    font-size: 1.6rem;
+  }
+}

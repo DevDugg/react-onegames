@@ -11,6 +11,7 @@ import Nav from "./components/Nav";
 // IMPORT PAGES
 import Home from "./pages/Home";
 import GameDescription from "./pages/GameDescription";
+import AboutUs from "./pages/AboutUs";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/game" element={<GameDescription />} />
+        <Route path="/about" element={<AboutUs />} />
       </Routes>
     </div>
   );

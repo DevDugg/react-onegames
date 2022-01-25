@@ -31,10 +31,9 @@ const ImageSlider = ({
   const m1270 = useMediaQuery("(min-width: 1270px)");
   const m1130 = useMediaQuery("(min-width: 1130px)");
   const m990 = useMediaQuery("(min-width: 990px)");
-  const m850 = useMediaQuery("(min-width: 850px)");
-  const m710 = useMediaQuery("(min-width: 710px)");
-  const m590 = useMediaQuery("(min-width: 590px)");
-  const m430 = useMediaQuery("(min-width: 430px)");
+  const m500 = useMediaQuery("(min-width: 500px)");
+  const m400 = useMediaQuery("(min-width: 400px)");
+  const m370 = useMediaQuery("(min-width: 370px)");
   // ===================
 
   useEffect(() => {
@@ -112,16 +111,13 @@ const ImageSlider = ({
                   ? 7
                   : m990
                   ? 6
-                  : m850
+                  : m500
                   ? 5
-                  : m710
+                  : m400
                   ? 4
-                  : m590
-                  ? 3
-                  : m430
-                  ? 2
-                  : 2
-                // ================
+                  : 3
+                // ? 3
+                // : 2
               }
               freeMode={true}
               watchSlidesProgress={true}

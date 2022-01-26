@@ -33,9 +33,9 @@ const GameDescription = () => {
 
   useEffect(() => {
     if (isActiveSlider) {
-      document.body.style.overflowY = "hidden";
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflowY = "visible";
+      document.body.style.overflow = "visible";
     }
   }, [isActiveSlider]);
 

@@ -44,6 +44,22 @@ ol {
   position: relative;
 }
 
+::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+::-webkit-scrollbar-track {
+  background: $dark-black;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background: $base-black;
+  cursor: pointer;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: $gray;
+}
+
 // git add --all
 // git add commit
 // git push

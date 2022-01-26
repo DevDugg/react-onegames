@@ -33,7 +33,6 @@ const ImageSlider = ({
   const m990 = useMediaQuery("(min-width: 990px)");
   const m500 = useMediaQuery("(min-width: 500px)");
   const m400 = useMediaQuery("(min-width: 400px)");
-  const m370 = useMediaQuery("(min-width: 370px)");
   // ===================
 
   useEffect(() => {

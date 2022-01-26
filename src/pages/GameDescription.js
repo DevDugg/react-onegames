@@ -32,6 +32,7 @@ const GameDescription = () => {
   const [activeImageId, setActiveImageId] = useState(0);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (isActiveSlider) {
       document.body.style.overflow = "hidden";
     } else {

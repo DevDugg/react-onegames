@@ -1,0 +1,123 @@
+.about {
+  padding: 10rem 0;
+  overflow-x: hidden;
+}
+
+.text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.text-block {
+  font-size: 3.1rem;
+  line-height: 4.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  a {
+    width: fit-content;
+    line-height: unset;
+    display: inline;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-decoration: none;
+    color: #fff;
+    border-bottom: 0.1rem solid #fff;
+    transition: 0.3s all ease;
+
+    &:hover {
+      color: $gray;
+      border-bottom: 0.1rem solid $gray;
+      transition: 0.3s all ease;
+    }
+  }
+}
+
+.indented {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.onleft {
+  opacity: 0;
+  transform: translateX(2rem);
+  transition: 1s all ease;
+
+  &.inview {
+    opacity: 1;
+    transform: translateX(0rem);
+    transition: 1s all ease;
+  }
+
+  &:hover {
+    animation: floatLeft 5s infinite ease;
+  }
+}
+
+.onright {
+  opacity: 0;
+  transform: translateX(-2rem);
+  transition: 1s all ease;
+
+  &.inview {
+    opacity: 1;
+    transform: translateX(0rem);
+    transition: 1s all ease;
+  }
+
+  &:hover {
+    animation: floatRight 5s infinite ease;
+  }
+}
+
+@keyframes floatLeft {
+  15% {
+    transform: translate(1rem, 1rem);
+  }
+
+  65% {
+    transform: translate(-1rem, -1rem);
+  }
+}
+
+@keyframes floatRight {
+  15% {
+    transform: translate(1rem, -1rem);
+  }
+
+  65% {
+    transform: translate(-1rem, 1rem);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .onleft {
+    &:hover {
+      animation: unset;
+    }
+  }
+
+  .onright {
+    &:hover {
+      animation: unset;
+    }
+  }
+  .text-block {
+    grid-template-columns: 1fr;
+  }
+  .about {
+    padding-top: 3rem;
+  }
+  .text-block {
+    font-size: 2.4rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .text-block {
+    font-size: 2rem;
+  }
+}

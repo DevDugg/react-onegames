@@ -24,7 +24,6 @@ const AboutUs = () => {
   const [block8, inView8] = useInView({ threshold: 0.2, triggerOnce: false });
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     if (inView1) {
       left1.current.classList.add("inview");
     }
@@ -50,6 +49,10 @@ const AboutUs = () => {
       right4.current.classList.add("inview");
     }
   }, [inView1, inView2, inView3, inView4, inView5, inView6, inView7, inView8]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   // ADD SCROLL ANIMATIONS =================
 
   return (

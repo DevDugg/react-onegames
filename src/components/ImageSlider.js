@@ -77,7 +77,7 @@ const ImageSlider = ({
                   {images.map((image, i) => {
                     return (
                       <SwiperSlide key={i} className="slider-img">
-                        <img src={image} alt={image} />
+                        <img src={image.image} alt={image.image} />
                       </SwiperSlide>
                     );
                   })}
@@ -126,7 +126,7 @@ const ImageSlider = ({
                 return (
                   <SwiperSlide key={i}>
                     <div className="slider-img-bottom">
-                      <img src={image} alt={image} />
+                      <img src={image.image} alt={image.image} />
                     </div>
                   </SwiperSlide>
                 );

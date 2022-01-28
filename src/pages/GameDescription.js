@@ -57,7 +57,7 @@ const GameDescription = () => {
     };
 
     makeRequest(url, imgUrl, trailerUrl);
-  }, []);
+  }, [gameId.id]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

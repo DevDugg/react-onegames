@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 // Importing images
 import death from "../images/death.png";
 import ghost from "../images/ghost.png";
@@ -7,38 +8,77 @@ import sekiro from "../images/sekiro.png";
 // Importing components
 import GridItem from "./GridItem";
 
-const Grid = ( { grid } ) => {
-    return(
-        <div className={ grid ? "grid" : "vertical" }>
+const Grid = ({ grid, data, isLoaded }) => {
+    return (
+        <div className={grid ? "grid" : "vertical"}>
+            {/* {data && (
+                data.map(item => <GridItem img={item.background_image} title={item.name} rating={item.metacritic} />)
+            )} */}
             <div className="column">
-                <GridItem img={ghost} title="GHOST OF TSUSHIMA" rating={92} />
-                <GridItem img={death} title="Death Stranding" rating={92} />
-                <GridItem img={last} title="The last of us part ||" rating={92} />
-                <GridItem img={sekiro} title="Sekiro shadow die twice" rating={92} />
+                {isLoaded[0]
+                    ? data[0].map((item, i) => {
+                          return (
+                              <GridItem
+                                  img={item.background_image}
+                                  title={item.name}
+                                  rating={item.metacritic}
+                                  key={i}
+                                  url={item.slug}
+                              />
+                          );
+                      })
+                    : ""}
             </div>
 
             <div className="column">
-                <GridItem img={death} title="Death Stranding" rating={92} />
-                <GridItem img={last} title="The last of us part ||" rating={92} />
-                <GridItem img={ghost} title="GHOST OF TSUSHIMA" rating={92} />
-                <GridItem img={sekiro} title="Sekiro shadow die twice" rating={92} />
+                {isLoaded[1]
+                    ? data[1].map((item, i) => {
+                          return (
+                              <GridItem
+                                  img={item.background_image}
+                                  title={item.name}
+                                  rating={item.metacritic}
+                                  key={i}
+                                  url={item.slug}
+                              />
+                          );
+                      })
+                    : ""}
             </div>
 
             <div className="column">
-                <GridItem img={sekiro} title="Sekiro shadow die twice" rating={92} />
-                <GridItem img={last} title="The last of us part ||" rating={92} />
-                <GridItem img={death} title="Death Stranding" rating={92} />
-                <GridItem img={ghost} title="GHOST OF TSUSHIMA" rating={92} />
+                {isLoaded[2]
+                    ? data[2].map((item, i) => {
+                          return (
+                              <GridItem
+                                  img={item.background_image}
+                                  title={item.name}
+                                  rating={item.metacritic}
+                                  key={i}
+                                  url={item.slug}
+                              />
+                          );
+                      })
+                    : ""}
             </div>
 
             <div className="column">
-                <GridItem img={sekiro} title="Sekiro shadow die twice" rating={92} />
-                <GridItem img={ghost} title="GHOST OF TSUSHIMA" rating={92} />
-                <GridItem img={last} title="The last of us part ||" rating={92} />
-                <GridItem img={death} title="Death Stranding" rating={92} />
+                {isLoaded[3]
+                    ? data[3].map((item, i) => {
+                          return (
+                              <GridItem
+                                  img={item.background_image}
+                                  title={item.name}
+                                  rating={item.metacritic}
+                                  key={i}
+                                  url={item.slug}
+                              />
+                          );
+                      })
+                    : ""}
             </div>
         </div>
     );
-}
+};
 
 export default Grid;

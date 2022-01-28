@@ -5,6 +5,10 @@ import search from "../icons/search.svg";
 
 const Nav = () => {
 
+  // API
+  
+  // ====================
+
   const [inputValue, setInputValue] = useState("")
 
   return (

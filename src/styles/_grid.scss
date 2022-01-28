@@ -5,6 +5,10 @@
   justify-content: center;
   margin-bottom: 6.4rem;
 
+  a {
+    text-decoration: none;
+  }
+
   .column {
     display: flex;
     flex-direction: column;

@@ -6,9 +6,6 @@ import GridItem from "./GridItem";
 const Grid = ({ grid, data }) => {
   return (
     <div className={grid ? "grid" : "vertical"}>
-      {/* {data && (
-                data.map(item => <GridItem img={item.background_image} title={item.name} rating={item.metacritic} />)
-            )} */}
       <div className="column">
         {data[0]
           ? data[0].map((item, i) => {

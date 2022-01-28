@@ -5,6 +5,9 @@ import Header from "../components/Header";
 import Grid from "../components/Grid";
 import axios from "axios";
 
+// AUTH
+import { auth } from "../auth";
+
 const Home = () => {
   // API
   const [apiData1, setApiData1] = useState();
@@ -43,7 +46,7 @@ const Home = () => {
   const base_url = "https://api.rawg.io/api/";
 
   // Key
-  const authKey = "20d39cf47c3f4163b64e141b002c2db3";
+  const authKey = auth;
 
   // Popular games
   const popular_games = `games?key=${authKey}&dates=${lastYear},${currentDate}&ordering=-rating&page_size=40`;

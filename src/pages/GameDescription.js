@@ -5,8 +5,11 @@ import axios from "axios";
 
 // IMPORT COMPONENTS
 import Breadcrumb from "../components/Breadcrumb";
-import Grid from "../components/Grid";
+import GridRelated from "../components/GridRelated";
 import ImageSlider from "../components/ImageSlider";
+
+// AUTH
+import { auth } from "../auth";
 
 const GameDescription = () => {
   const gameId = useParams();
@@ -24,7 +27,7 @@ const GameDescription = () => {
     const url = `https://api.rawg.io/api/games/${gameId.id}`;
     const imgUrl = `https://api.rawg.io/api/games/${gameId.id}/screenshots`;
     const trailerUrl = `https://api.rawg.io/api/games/${gameId.id}/movies`;
-    const authKey = "20d39cf47c3f4163b64e141b002c2db3";
+    const authKey = auth;
     const makeRequest = (url, imgUrl, trailerUrl) => {
       axios
         .get(url + "?key=" + authKey)
@@ -232,10 +235,10 @@ const GameDescription = () => {
             </div>
           </div>
         </div>
-        <div className="game-desc-inner-2">
+        {/* <div className="game-desc-inner-2">
           <h2 className="game-desc-title">Games like The last of us part II</h2>
-          {/* <Grid grid={true} /> */}
-        </div>
+          <GridRelated grid={true} param={gameId} />
+        </div> */}
       </div>
     </section>
   );

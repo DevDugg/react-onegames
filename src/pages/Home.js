@@ -57,7 +57,6 @@ const Home = () => {
         .get(link1)
         .then((data) => {
           setApiData1(data.data.results);
-          console.log(apiData1);
         })
         .catch((err) => console.log(err));
 
@@ -65,7 +64,6 @@ const Home = () => {
         .get(link2)
         .then((data) => {
           setApiData2(data.data.results);
-          console.log(apiData2);
         })
         .catch((err) => console.log(err));
 
@@ -73,7 +71,6 @@ const Home = () => {
         .get(link3)
         .then((data) => {
           setApiData3(data.data.results);
-          console.log(apiData3);
         })
         .catch((err) => console.log(err));
 
@@ -81,7 +78,6 @@ const Home = () => {
         .get(link4)
         .then((data) => {
           setApiData4(data.data.results);
-          console.log(apiData4);
         })
         .catch((err) => console.log(err));
     };

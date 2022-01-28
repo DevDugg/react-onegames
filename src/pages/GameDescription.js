@@ -30,7 +30,6 @@ const GameDescription = () => {
         .get(url + "?key=" + authKey)
         .then((res) => {
           setApiData(res.data);
-          console.log(res.data);
         })
         .catch((err) => {
           console.log(err);
@@ -39,7 +38,6 @@ const GameDescription = () => {
         .get(imgUrl + "?key=" + authKey)
         .then((res) => {
           setGameScreens(res.data.results);
-          console.log(res.data);
         })
         .catch((err) => {
           console.log(err);
@@ -49,7 +47,6 @@ const GameDescription = () => {
         .get(trailerUrl + "?key=" + authKey)
         .then((res) => {
           setGameVideo(res.data.results);
-          console.log(res.data.results);
         })
         .catch((err) => {
           console.log(err);
@@ -102,7 +99,17 @@ const GameDescription = () => {
                 <h3 className="release">{apiData ? apiData.released : ""}</h3>
                 {apiData ? (
                   apiData.metacritic ? (
-                    <h4 className="score">{apiData.metacritic}</h4>
+                    <h4
+                      className={
+                        apiData.metacritic >= 75
+                          ? "score score-high"
+                          : 50 < apiData.metacritic < 75
+                          ? "score score-mid"
+                          : "score score-low"
+                      }
+                    >
+                      {apiData.metacritic}
+                    </h4>
                   ) : (
                     ""
                   )
@@ -147,7 +154,17 @@ const GameDescription = () => {
                       <li>
                         {apiData ? (
                           apiData.metacritic ? (
-                            <h4 className="score">{apiData.metacritic}</h4>
+                            <h4
+                              className={
+                                apiData.metacritic >= 75
+                                  ? "score score-high"
+                                  : 50 < apiData.metacritic < 75
+                                  ? "score score-mid"
+                                  : "score score-low"
+                              }
+                            >
+                              {apiData.metacritic}
+                            </h4>
                           ) : (
                             ""
                           )

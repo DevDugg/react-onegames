@@ -10,7 +10,19 @@ const GridItem = ({ img, title, rating, url }) => {
         </div>
         <div className="grid-item-desc">
           <h3 className="grid-item-title">{title}</h3>
-          {rating && <div className="grid-item-score">{rating}</div>}
+          {rating && (
+            <div
+              className={
+                rating >= 75
+                  ? "grid-item-score score-high"
+                  : 50 < rating < 75
+                  ? "grid-item-score score-mid"
+                  : "grid-item-score score-low"
+              }
+            >
+              {rating}
+            </div>
+          )}
         </div>
       </div>
     </Link>

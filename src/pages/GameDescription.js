@@ -235,10 +235,6 @@ const GameDescription = () => {
             </div>
           </div>
         </div>
-        {/* <div className="game-desc-inner-2">
-          <h2 className="game-desc-title">Games like The last of us part II</h2>
-          <GridRelated grid={true} param={gameId} />
-        </div> */}
       </div>
     </section>
   );

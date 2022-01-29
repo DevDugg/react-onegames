@@ -5,7 +5,7 @@ import axios from "axios";
 
 // IMPORT COMPONENTS
 import Breadcrumb from "../components/Breadcrumb";
-import GridRelated from "../components/GridRelated";
+// import GridRelated from "../components/GridRelated";
 import ImageSlider from "../components/ImageSlider";
 
 // AUTH
@@ -14,8 +14,6 @@ import { auth } from "../auth";
 const GameDescription = () => {
     const gameId = useParams();
     const [apiData, setApiData] = useState();
-
-    const [gameVideo, setGameVideo] = useState();
 
     const [gameScreens, setGameScreens] = useState();
 
@@ -26,9 +24,8 @@ const GameDescription = () => {
     useEffect(() => {
         const url = `https://api.rawg.io/api/games/${gameId.id}`;
         const imgUrl = `https://api.rawg.io/api/games/${gameId.id}/screenshots`;
-        const trailerUrl = `https://api.rawg.io/api/games/${gameId.id}/movies`;
         const authKey = auth;
-        const makeRequest = (url, imgUrl, trailerUrl) => {
+        const makeRequest = (url, imgUrl) => {
             axios
                 .get(url + "?key=" + authKey)
                 .then((res) => {
@@ -45,18 +42,8 @@ const GameDescription = () => {
                 .catch((err) => {
                     console.log(err);
                 });
-
-            axios
-                .get(trailerUrl + "?key=" + authKey)
-                .then((res) => {
-                    setGameVideo(res.data.results);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
         };
-
-        makeRequest(url, imgUrl, trailerUrl);
+        makeRequest(url, imgUrl);
     }, [gameId.id]);
 
     useEffect(() => {
@@ -68,6 +55,8 @@ const GameDescription = () => {
         }
     }, [isActiveSlider]);
 
+    if (gameScreens) {
+    }
     return (
         <section className="game-desc">
             <ImageSlider
@@ -81,7 +70,7 @@ const GameDescription = () => {
                 style={
                     apiData
                         ? {
-                              background: `linear-gradient(360deg,#151515 3.11%,rgba(21, 21, 21, 0.33) 100%),url(${apiData.background_image})`,
+                              backgroundImage: `linear-gradient(360deg,#151515 3.11%,rgba(21, 21, 21, 0.33) 100%),url(${apiData.background_image})`,
                               backgroundClip: "border-box",
                               backgroundRepeat: "no-repeat",
                               backgroundPosition: "center",
@@ -188,8 +177,12 @@ const GameDescription = () => {
                                             </li>
                                         </ul>
                                     </div>
-                                ) : null
-                            ) : null}
+                                ) : (
+                                    ""
+                                )
+                            ) : (
+                                ""
+                            )}
 
                             <div className="game-char-block genre-block">
                                 <h6>Genre</h6>
@@ -206,27 +199,25 @@ const GameDescription = () => {
                             </div>
                         </div>
                         <div className="game-images">
-                            {gameVideo && gameScreens ? (
-                                gameVideo[0] ? (
-                                    <div className="game-video">
-                                        <video
-                                            src={gameVideo[0]}
-                                            autoPlay
-                                            muted
-                                        />
-                                    </div>
-                                ) : (
-                                    <div className="game-video">
-                                        <img
-                                            src={gameScreens[0].image}
-                                            style={{ objectFit: "cover" }}
-                                            alt={gameScreens[0].id}
-                                        />
-                                    </div>
-                                )
-                            ) : (
-                                ""
-                            )}
+                            {gameScreens
+                                ? gameScreens.map((el, i) => {
+                                      if (i === 0) {
+                                          return (
+                                              <div
+                                                  className="game-video"
+                                                  key={i}
+                                              >
+                                                  <img
+                                                      src={el.image}
+                                                      alt={el.image}
+                                                  />
+                                              </div>
+                                          );
+                                      } else {
+                                          return "";
+                                      }
+                                  })
+                                : ""}
                             <div className="game-img-block">
                                 {gameScreens
                                     ? gameScreens.map((el, i) => {

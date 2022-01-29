@@ -40,7 +40,6 @@ const Home = () => {
   const currentDay = getCurrentDay();
   const currentDate = `${currentYear}-${currentMont}-${currentDay}`;
   const lastYear = `${currentYear - 1}-${currentMont}-${currentDay}`;
-  const nextYear = `${currentYear + 1}-${currentMont}-${currentDay}`;
 
   // Base link
   const base_url = "https://api.rawg.io/api/";
@@ -91,7 +90,7 @@ const Home = () => {
       popularGamesURL + "&page=3",
       popularGamesURL + "&page=4"
     );
-  }, []);
+  }, [popularGamesURL]);
 
   // ================================
 

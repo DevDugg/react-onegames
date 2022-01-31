@@ -6,7 +6,7 @@
 .pnp.js
 
 #auth key
-# src/auth.js
+src/auth.js
 
 # testing
 /coverage

@@ -53,11 +53,11 @@ ol {
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 1rem;
-  background: $base-black;
+  background: $gray;
   cursor: pointer;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: $gray;
+  background: $light-black;
 }
 
 // git add --all

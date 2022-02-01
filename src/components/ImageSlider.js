@@ -1,12 +1,11 @@
 // IMPORT MODULES
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { FreeMode, Navigation, Thumbs } from "swiper";
 
 // IMPORT SWIPER STYLES
 import "swiper/css";
 import "swiper/css/pagination";
-import { useEffect } from "react/cjs/react.development";
 
 // IMPORT CUSTOM HOOKS
 import useMediaQuery from "../hooks/useMediaQuery";
@@ -31,10 +30,8 @@ const ImageSlider = ({
   const m1270 = useMediaQuery("(min-width: 1270px)");
   const m1130 = useMediaQuery("(min-width: 1130px)");
   const m990 = useMediaQuery("(min-width: 990px)");
-  const m850 = useMediaQuery("(min-width: 850px)");
-  const m710 = useMediaQuery("(min-width: 710px)");
-  const m590 = useMediaQuery("(min-width: 590px)");
-  const m430 = useMediaQuery("(min-width: 430px)");
+  const m500 = useMediaQuery("(min-width: 500px)");
+  const m400 = useMediaQuery("(min-width: 400px)");
   // ===================
 
   useEffect(() => {
@@ -79,7 +76,7 @@ const ImageSlider = ({
                   {images.map((image, i) => {
                     return (
                       <SwiperSlide key={i} className="slider-img">
-                        <img src={image} alt={image} />
+                        <img src={image.image} alt={image.image} />
                       </SwiperSlide>
                     );
                   })}
@@ -112,16 +109,13 @@ const ImageSlider = ({
                   ? 7
                   : m990
                   ? 6
-                  : m850
+                  : m500
                   ? 5
-                  : m710
+                  : m400
                   ? 4
-                  : m590
-                  ? 3
-                  : m430
-                  ? 2
-                  : 2
-                // ================
+                  : 3
+                // ? 3
+                // : 2
               }
               freeMode={true}
               watchSlidesProgress={true}
@@ -131,7 +125,7 @@ const ImageSlider = ({
                 return (
                   <SwiperSlide key={i}>
                     <div className="slider-img-bottom">
-                      <img src={image} alt={image} />
+                      <img src={image.image} alt={image.image} />
                     </div>
                   </SwiperSlide>
                 );

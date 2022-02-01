@@ -1,173 +1,228 @@
 // IMPORT MODULES
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 // IMPORT COMPONENTS
 import Breadcrumb from "../components/Breadcrumb";
-import Grid from "../components/Grid";
+// import GridRelated from "../components/GridRelated";
 import ImageSlider from "../components/ImageSlider";
 
-// IMPORT IMAGES
-import Video from "../images/game-video.jpg";
-import Img_1 from "../images/game-img-1.jpg";
-import Img_2 from "../images/game-img-2.jpg";
-import Img_3 from "../images/game-img-3.jpg";
-import Img_4 from "../images/game-img-4.jpg";
+// AUTH
+import { auth } from "../auth";
 
 const GameDescription = () => {
-  const images = [
-    Img_1,
-    Img_2,
-    Img_3,
-    Img_4,
-    Img_1,
-    Img_2,
-    Img_3,
-    Img_4,
-    Img_1,
-    Img_2,
-    Img_3,
-    Img_4,
-  ];
+  const gameId = useParams();
+  const [apiData, setApiData] = useState();
+
+  const [gameScreens, setGameScreens] = useState();
+
   const [isActiveSlider, setIsActiveSlider] = useState(false);
   const [activeImageId, setActiveImageId] = useState(0);
 
+  // API
   useEffect(() => {
+    const url = `https://api.rawg.io/api/games/${gameId.id}`;
+    const imgUrl = `https://api.rawg.io/api/games/${gameId.id}/screenshots`;
+    const authKey = auth;
+    const makeRequest = (url, imgUrl) => {
+      axios
+        .get(url + "?key=" + authKey)
+        .then((res) => {
+          setApiData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      axios
+        .get(imgUrl + "?key=" + authKey)
+        .then((res) => {
+          setGameScreens(res.data.results);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    makeRequest(url, imgUrl);
+  }, [gameId.id]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
     if (isActiveSlider) {
-      document.body.style.overflowY = "hidden";
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflowY = "visible";
+      document.body.style.overflow = "visible";
     }
   }, [isActiveSlider]);
 
+  if (gameScreens) {
+  }
   return (
     <section className="game-desc">
       <ImageSlider
-        images={images}
+        images={gameScreens ? gameScreens : []}
         activeImageId={activeImageId}
         isActiveSlider={isActiveSlider}
         setIsActiveSlider={setIsActiveSlider}
       />
-      <div className="bg"></div>
+      <div
+        className="bg"
+        style={
+          apiData
+            ? {
+                backgroundImage: `linear-gradient(360deg,#151515 3.11%,rgba(21, 21, 21, 0.33) 100%),url(${apiData.background_image})`,
+                backgroundClip: "border-box",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+              }
+            : {}
+        }
+      ></div>
       <div className="container">
         <div className="game-desc-inner">
           <div className="game-info">
             <div className="game-info__left__top">
               <Breadcrumb
-                linkTitles={["the last of us part ii"]}
-                linkTargets={["/game"]}
+                linkTitles={apiData ? [apiData.name] : [""]}
+                linkTargets={[`/game/${gameId.id}`]}
               />
               <div className="game-info__left-meta">
-                <h3 className="release">june 19, 2020</h3>
-                <h4 className="score">95</h4>
+                <h3 className="release">{apiData ? apiData.released : ""}</h3>
+                {apiData ? (
+                  apiData.metacritic ? (
+                    <h4
+                      className={
+                        apiData.metacritic >= 75
+                          ? "score score-high"
+                          : 50 < apiData.metacritic < 75
+                          ? "score score-mid"
+                          : "score score-low"
+                      }
+                    >
+                      {apiData.metacritic}
+                    </h4>
+                  ) : (
+                    ""
+                  )
+                ) : (
+                  ""
+                )}
               </div>
-              <h1 className="game-name">The last of us part ii</h1>
+              <h1 className="game-name">{apiData ? apiData.name : ""}</h1>
             </div>
             <div className="game-info__left__middle">
               <h3>About</h3>
               <h5 className="game-about">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                aliquam, purus sit amet luctus venenatis, lectus magna fringilla
-                urna, porttitor rhoncus dolor purus non enim praesent elementum
-                facilisis leo, vel fringilla est ullamcorper eget nulla facilisi
-                etiam dignissim diam quis enim lobortis scelerisque fermentum
-                dui faucibus in ornare quam viverrah
+                {apiData ? apiData.description_raw : ""}
               </h5>
             </div>
             <div className="game-info__left__bottom">
               <div className="game-char-block plat-block">
                 <h6>Platforms</h6>
                 <ul>
-                  <li>
-                    <h3>PlayStation 4</h3>
-                  </li>
-                  <li>
-                    <h3>PlayStation 5</h3>
-                  </li>
+                  {apiData
+                    ? apiData.platforms.map((el, i) => (
+                        <li key={i}>
+                          <h3>{el.platform.name}</h3>
+                        </li>
+                      ))
+                    : ""}
                 </ul>
               </div>
               <div className="game-char-block release-block">
                 <h6>Release Date</h6>
                 <ul>
                   <li>
-                    <h3>june 19, 2020</h3>
+                    <h3>{apiData ? apiData.released : ""}</h3>
                   </li>
                 </ul>
               </div>
-              <div className="game-char-block score-block">
-                <h6>Rating</h6>
-                <ul>
-                  <li>
-                    <h4 className="score">95</h4>
-                  </li>
-                </ul>
-              </div>
+              {apiData ? (
+                apiData.metacritic ? (
+                  <div className="game-char-block score-block">
+                    <h6>Rating</h6>
+                    <ul>
+                      <li>
+                        {apiData ? (
+                          apiData.metacritic ? (
+                            <h4
+                              className={
+                                apiData.metacritic >= 75
+                                  ? "score score-high"
+                                  : 50 < apiData.metacritic < 75
+                                  ? "score score-mid"
+                                  : "score score-low"
+                              }
+                            >
+                              {apiData.metacritic}
+                            </h4>
+                          ) : (
+                            ""
+                          )
+                        ) : (
+                          ""
+                        )}
+                      </li>
+                    </ul>
+                  </div>
+                ) : (
+                  ""
+                )
+              ) : (
+                ""
+              )}
+
               <div className="game-char-block genre-block">
                 <h6>Genre</h6>
+
                 <ul>
-                  <li>
-                    <h3>Action</h3>
-                  </li>
-                  <li>
-                    <h3>Shooter</h3>
-                  </li>
-                  <li>
-                    <h3>Adventure</h3>
-                  </li>
+                  {apiData
+                    ? apiData.genres.map((el, i) => (
+                        <li key={i}>
+                          <h3>{el.name}</h3>
+                        </li>
+                      ))
+                    : ""}
                 </ul>
               </div>
             </div>
             <div className="game-images">
-              <div className="game-video">
-                <img src={Video} alt="game" />
-              </div>
+              {gameScreens
+                ? gameScreens.map((el, i) => {
+                    if (i === 0) {
+                      return (
+                        <div className="game-video" key={i}>
+                          <img src={el.image} alt={el.image} />
+                        </div>
+                      );
+                    } else {
+                      return "";
+                    }
+                  })
+                : ""}
               <div className="game-img-block">
-                <div className="game-img">
-                  <img
-                    src={Img_1}
-                    alt="screen 1"
-                    onClick={() => {
-                      setIsActiveSlider(true);
-                      setActiveImageId(0);
-                    }}
-                  />
-                </div>
-                <div className="game-img">
-                  <img
-                    src={Img_2}
-                    alt="screen 2"
-                    onClick={() => {
-                      setIsActiveSlider(true);
-                      setActiveImageId(1);
-                    }}
-                  />
-                </div>
-                <div className="game-img">
-                  <img
-                    src={Img_3}
-                    alt="screen 3"
-                    onClick={() => {
-                      setIsActiveSlider(true);
-                      setActiveImageId(2);
-                    }}
-                  />
-                </div>
-                <div className="game-img">
-                  <img
-                    src={Img_4}
-                    alt="screen 4"
-                    onClick={() => {
-                      setIsActiveSlider(true);
-                      setActiveImageId(3);
-                    }}
-                  />
-                </div>
+                {gameScreens
+                  ? gameScreens.map((el, i) => {
+                      if (i < 7) {
+                        return (
+                          <div
+                            key={el.id}
+                            className="game-img"
+                            onClick={() => {
+                              setIsActiveSlider(true);
+                              setActiveImageId(i);
+                            }}
+                          >
+                            <img src={el.image} alt={el.id} />
+                          </div>
+                        );
+                      } else return "";
+                    })
+                  : ""}
               </div>
             </div>
           </div>
-        </div>
-        <div className="game-desc-inner-2">
-          <h2 className="game-desc-title">Games like The last of us part II</h2>
-          <Grid grid={true} />
         </div>
       </div>
     </section>

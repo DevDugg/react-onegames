@@ -6,16 +6,15 @@
   min-width: 100%;
   height: 100vh;
   min-height: 66.1rem;
-  background: linear-gradient(
-      360deg,
-      #151515 3.11%,
-      rgba(21, 21, 21, 0.33) 100%
-    ),
-    url("../images/game-bg.jpg");
+
   background-clip: border-box;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+}
+
+.game-desc-inner {
+  padding-bottom: 10rem;
 }
 
 .game-info {
@@ -89,11 +88,14 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
   gap: 0.8rem;
 
   ul {
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
+    flex-shrink: 0;
     gap: 1.8rem;
   }
 
@@ -142,7 +144,7 @@
   img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 0.8rem;
   }
 }

@@ -28,6 +28,11 @@ $font-bold: 700;
   border-radius: 0.2rem;
 }
 
+.score-high {
+  color: $green !important;
+  border: 0.1rem solid $green !important;
+}
+
 @mixin score-mid {
   display: inline-block;
   font-weight: $font-medium;
@@ -35,6 +40,10 @@ $font-bold: 700;
   border: 0.1rem solid $orange;
   padding: 0.45rem 0.65rem;
   border-radius: 0.2rem;
+}
+.score-mid {
+  color: $orange !important;
+  border: 0.1rem solid $orange !important;
 }
 
 @mixin score-low {
@@ -44,6 +53,11 @@ $font-bold: 700;
   border: 0.1rem solid $red;
   padding: 0.45rem 0.65rem;
   border-radius: 0.2rem;
+}
+
+.score-low {
+  color: $red !important;
+  border: 0.1rem solid $red !important;
 }
 
 // // Uppercase text mixin

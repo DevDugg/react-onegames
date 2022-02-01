@@ -5,7 +5,7 @@ import axios from "axios";
 
 // IMPORT COMPONENTS
 import Breadcrumb from "../components/Breadcrumb";
-// import GridRelated from "../components/GridRelated";
+import Loader from "../components/Loader";
 import ImageSlider from "../components/ImageSlider";
 
 // AUTH
@@ -80,150 +80,154 @@ const GameDescription = () => {
         }
       ></div>
       <div className="container">
-        <div className="game-desc-inner">
-          <div className="game-info">
-            <div className="game-info__left__top">
-              <Breadcrumb
-                linkTitles={apiData ? [apiData.name] : [""]}
-                linkTargets={[`/game/${gameId.id}`]}
-              />
-              <div className="game-info__left-meta">
-                <h3 className="release">{apiData ? apiData.released : ""}</h3>
+        {apiData ? (
+          <div className="game-desc-inner">
+            <div className="game-info">
+              <div className="game-info__left__top">
+                <Breadcrumb
+                  linkTitles={apiData ? [apiData.name] : [""]}
+                  linkTargets={[`/game/${gameId.id}`]}
+                />
+                <div className="game-info__left-meta">
+                  <h3 className="release">{apiData ? apiData.released : ""}</h3>
+                  {apiData ? (
+                    apiData.metacritic ? (
+                      <h4
+                        className={
+                          apiData.metacritic >= 75
+                            ? "score score-high"
+                            : 50 < apiData.metacritic < 75
+                            ? "score score-mid"
+                            : "score score-low"
+                        }
+                      >
+                        {apiData.metacritic}
+                      </h4>
+                    ) : (
+                      ""
+                    )
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <h1 className="game-name">{apiData ? apiData.name : ""}</h1>
+              </div>
+              <div className="game-info__left__middle">
+                <h3>About</h3>
+                <h5 className="game-about">
+                  {apiData ? apiData.description_raw : ""}
+                </h5>
+              </div>
+              <div className="game-info__left__bottom">
+                <div className="game-char-block plat-block">
+                  <h6>Platforms</h6>
+                  <ul>
+                    {apiData
+                      ? apiData.platforms.map((el, i) => (
+                          <li key={i}>
+                            <h3>{el.platform.name}</h3>
+                          </li>
+                        ))
+                      : ""}
+                  </ul>
+                </div>
+                <div className="game-char-block release-block">
+                  <h6>Release Date</h6>
+                  <ul>
+                    <li>
+                      <h3>{apiData ? apiData.released : ""}</h3>
+                    </li>
+                  </ul>
+                </div>
                 {apiData ? (
                   apiData.metacritic ? (
-                    <h4
-                      className={
-                        apiData.metacritic >= 75
-                          ? "score score-high"
-                          : 50 < apiData.metacritic < 75
-                          ? "score score-mid"
-                          : "score score-low"
-                      }
-                    >
-                      {apiData.metacritic}
-                    </h4>
+                    <div className="game-char-block score-block">
+                      <h6>Rating</h6>
+                      <ul>
+                        <li>
+                          {apiData ? (
+                            apiData.metacritic ? (
+                              <h4
+                                className={
+                                  apiData.metacritic >= 75
+                                    ? "score score-high"
+                                    : 50 < apiData.metacritic < 75
+                                    ? "score score-mid"
+                                    : "score score-low"
+                                }
+                              >
+                                {apiData.metacritic}
+                              </h4>
+                            ) : (
+                              ""
+                            )
+                          ) : (
+                            ""
+                          )}
+                        </li>
+                      </ul>
+                    </div>
                   ) : (
                     ""
                   )
                 ) : (
                   ""
                 )}
-              </div>
-              <h1 className="game-name">{apiData ? apiData.name : ""}</h1>
-            </div>
-            <div className="game-info__left__middle">
-              <h3>About</h3>
-              <h5 className="game-about">
-                {apiData ? apiData.description_raw : ""}
-              </h5>
-            </div>
-            <div className="game-info__left__bottom">
-              <div className="game-char-block plat-block">
-                <h6>Platforms</h6>
-                <ul>
-                  {apiData
-                    ? apiData.platforms.map((el, i) => (
-                        <li key={i}>
-                          <h3>{el.platform.name}</h3>
-                        </li>
-                      ))
-                    : ""}
-                </ul>
-              </div>
-              <div className="game-char-block release-block">
-                <h6>Release Date</h6>
-                <ul>
-                  <li>
-                    <h3>{apiData ? apiData.released : ""}</h3>
-                  </li>
-                </ul>
-              </div>
-              {apiData ? (
-                apiData.metacritic ? (
-                  <div className="game-char-block score-block">
-                    <h6>Rating</h6>
-                    <ul>
-                      <li>
-                        {apiData ? (
-                          apiData.metacritic ? (
-                            <h4
-                              className={
-                                apiData.metacritic >= 75
-                                  ? "score score-high"
-                                  : 50 < apiData.metacritic < 75
-                                  ? "score score-mid"
-                                  : "score score-low"
-                              }
-                            >
-                              {apiData.metacritic}
-                            </h4>
-                          ) : (
-                            ""
-                          )
-                        ) : (
-                          ""
-                        )}
-                      </li>
-                    </ul>
-                  </div>
-                ) : (
-                  ""
-                )
-              ) : (
-                ""
-              )}
 
-              <div className="game-char-block genre-block">
-                <h6>Genre</h6>
+                <div className="game-char-block genre-block">
+                  <h6>Genre</h6>
 
-                <ul>
-                  {apiData
-                    ? apiData.genres.map((el, i) => (
-                        <li key={i}>
-                          <h3>{el.name}</h3>
-                        </li>
-                      ))
-                    : ""}
-                </ul>
+                  <ul>
+                    {apiData
+                      ? apiData.genres.map((el, i) => (
+                          <li key={i}>
+                            <h3>{el.name}</h3>
+                          </li>
+                        ))
+                      : ""}
+                  </ul>
+                </div>
               </div>
-            </div>
-            <div className="game-images">
-              {gameScreens
-                ? gameScreens.map((el, i) => {
-                    if (i === 0) {
-                      return (
-                        <div className="game-video" key={i}>
-                          <img src={el.image} alt={el.image} />
-                        </div>
-                      );
-                    } else {
-                      return "";
-                    }
-                  })
-                : ""}
-              <div className="game-img-block">
+              <div className="game-images">
                 {gameScreens
                   ? gameScreens.map((el, i) => {
-                      if (i < 7) {
+                      if (i === 0) {
                         return (
-                          <div
-                            key={el.id}
-                            className="game-img"
-                            onClick={() => {
-                              setIsActiveSlider(true);
-                              setActiveImageId(i);
-                            }}
-                          >
-                            <img src={el.image} alt={el.id} />
+                          <div className="game-video" key={i}>
+                            <img src={el.image} alt={el.image} />
                           </div>
                         );
-                      } else return "";
+                      } else {
+                        return "";
+                      }
                     })
                   : ""}
+                <div className="game-img-block">
+                  {gameScreens
+                    ? gameScreens.map((el, i) => {
+                        if (i < 7) {
+                          return (
+                            <div
+                              key={el.id}
+                              className="game-img"
+                              onClick={() => {
+                                setIsActiveSlider(true);
+                                setActiveImageId(i);
+                              }}
+                            >
+                              <img src={el.image} alt={el.id} />
+                            </div>
+                          );
+                        } else return "";
+                      })
+                    : ""}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <Loader width={"20rem"} height={"30rem"} />
+        )}
       </div>
     </section>
   );

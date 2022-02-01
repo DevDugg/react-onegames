@@ -2,10 +2,11 @@
 
 ## Technologies used:
 
-- ReactJs
+- React
+- react-intersection-observer
 - react-router-dom
 - SCSS (node-sass)
 - Axios
-- SwiperJs
- 
+- Swiper
+
  # [Checkout the actual website!](https://objective-lamarr-d9d926.netlify.app/)
